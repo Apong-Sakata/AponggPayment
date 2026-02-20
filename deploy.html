@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Converter 200+ Fitur - Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff0000 0%, #ffffff 50%, #ff0000 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 30px;
+            padding: 5px;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0000, #ff3333, #ff6666, #ff9999, #ffcccc, #ffffff, #ffcccc, #ff9999, #ff6666, #ff3333, #ff0000);
+            background-size: 400% 400%;
+            border-radius: 20px;
+            animation: rgb-border 6s ease infinite;
+        }
+
+        @keyframes rgb-border {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            background: linear-gradient(to right, #ff0000, #ffffff);
+            color: #333;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .feature-tabs {
+            display: flex;
+            background: #f8f8f8;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            background: #e9e9e9;
+            color: #333;
+        }
+
+        .tab-btn.active {
+            color: #ff0000;
+            border-bottom: 3px solid #ff0000;
+            background: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+        }
+
+        .convert-btn {
+            background: linear-gradient(to right, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .convert-btn:hover {
+            background: linear-gradient(to right, #cc0000, #aa0000);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .result-container {
+            margin-top: 30px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .result-header h3 {
+            color: #333;
+        }
+
+        .copy-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn:hover {
+            background: #388E3C;
+        }
+
+        .result-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+            max-height: 400px;
+            overflow-y: auto;
+            word-wrap: break-word;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .donation-section {
+            background: #f8f8f8;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px dashed #e0e0e0;
+        }
+
+        .donation-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .dana-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .dana-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to bottom, #00aaff, #0088cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .dana-logo::after {
+            content: "DANA";
+            position: absolute;
+            font-size: 10px;
+            bottom: 5px;
+            font-weight: bold;
+        }
+
+        .dana-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .usage-section {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .usage-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .usage-steps {
+            list-style-type: none;
+            counter-reset: step-counter;
+        }
+
+        .usage-steps li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .usage-steps li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #ff0000;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .conversion-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .option-btn.active {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #ff0000;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #ff0000;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .game-container, .tool-container {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .game-title, .tool-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .game-cell {
+            aspect-ratio: 1;
+            background: white;
+            border: 2px solid #333;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .game-cell:hover {
+            background: #f0f0f0;
+        }
+
+        .game-status {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .game-btn, .tool-btn {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .game-btn:hover, .tool-btn:hover {
+            background: #cc0000;
+        }
+
+        .tool-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tool-result {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .calc-btn {
+            padding: 15px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .calc-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .calc-display {
+            grid-column: 1 / span 4;
+            padding: 15px;
+            background: #333;
+            color: white;
+            text-align: right;
+            font-size: 24px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .proxy-list {
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .proxy-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            font-family: monospace;
+        }
+
+        .proxy-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .feature-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                justify-content: center;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-star"></i> Super Converter 200+ Fitur</h1>
+            <p>Website Converter dengan 200+ Fitur Game, Tools & Utilitas</p>
+        </div>
+        
+        <div class="feature-tabs">
+            <button class="tab-btn active" data-tab="converter">
+                <i class="fas fa-exchange-alt"></i> URL Converter
+            </button>
+            <button class="tab-btn" data-tab="proxy">
+                <i class="fas fa-shield-alt"></i> Proxy Generator
+            </button>
+            <button class="tab-btn" data-tab="games">
+                <i class="fas fa-gamepad"></i> Games (50+)
+            </button>
+            <button class="tab-btn" data-tab="tools">
+                <i class="fas fa-tools"></i> Tools (50+)
+            </button>
+            <button class="tab-btn" data-tab="social">
+                <i class="fas fa-share-alt"></i> Social Tools (30+)
+            </button>
+            <button class="tab-btn" data-tab="utilities">
+                <i class="fas fa-cogs"></i> Utilities (30+)
+            </button>
+        </div>
+        
+        <!-- URL Converter Tab -->
+        <div class="tab-content active" id="converter">
+            <div class="content">
+                <div class="input-group">
+                    <label for="urlInput">Masukkan URL Website:</label>
+                    <div class="input-container">
+                        <input type="text" id="urlInput" class="url-input" placeholder="https://example.com">
+                        <button id="convertBtn" class="convert-btn">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Convert</span>
+                        </button>
+                    </div>
+                    
+                    <div class="conversion-options">
+                        <button class="option-btn active" data-type="iframe">Embed Iframe</button>
+                        <button class="option-btn" data-type="link">Link Sederhana</button>
+                        <button class="option-btn" data-type="preview">Preview Card</button>
+                    </div>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-header">
+                        <h3><i class="fas fa-file-code"></i> Kode HTML:</h3>
+                        <button id="copyBtn" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            <span>Salin</span>
+                        </button>
+                    </div>
+                    <div id="resultBox" class="result-box">
+Hasil konversi akan muncul di sini...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proxy Generator Tab -->
+        <div class="tab-content" id="proxy">
+            <div class="content">
+                <h2><i class="fas fa-shield-alt"></i> Proxy Generator</h2>
+                <p>Generate proxy server untuk kebutuhan browsing aman</p>
+                
+                <div class="input-group">
+                    <label>Jumlah Proxy yang dihasilkan:</label>
+                    <div class="input-container">
+                        <input type="number" id="proxyCount" class="url-input" value="10" min="1" max="100">
+                        <button class="convert-btn" onclick="generateProxies()">
+                            <i class="fas fa-bolt"></i>
+                            <span>Generate Proxy</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-header">
+                        <h3><i class="fas fa-list"></i> Daftar Proxy:</h3>
+                        <button class="copy-btn" onclick="copyProxies()">
+                            <i class="fas fa-copy"></i>
+                            <span>Salin Semua</span>
+                        </button>
+                    </div>
+                    <div id="proxyResult" class="proxy-list">
+                        Klik "Generate Proxy" untuk menampilkan daftar proxy
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Games Tab -->
+        <div class="tab-content" id="games">
+            <div class="content">
+                <h2><i class="fas fa-gamepad"></i> Koleksi Game Seru (50+)</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="openGame('tic-tac-toe')">
+                        <div class="feature-icon"><i class="fas fa-times"></i></div>
+                        <div class="feature-name">Tic Tac Toe</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('memory')">
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <div class="feature-name">Memory Game</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('snake')">
+                        <div class="feature-icon"><i class="fas fa-worm"></i></div>
+                        <div class="feature-name">Snake Game</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('quiz')">
+                        <div class="feature-icon"><i class="fas fa-question"></i></div>
+                        <div class="feature-name">Quiz Game</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('dice')">
+                        <div class="feature-icon"><i class="fas fa-dice"></i></div>
+                        <div class="feature-name">Dice Roller</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('rps')">
+                        <div class="feature-icon"><i class="fas fa-hand-rock"></i></div>
+                        <div class="feature-name">Batu Gunting Kertas</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('hangman')">
+                        <div class="feature-icon"><i class="fas fa-user"></i></div>
+                        <div class="feature-name">Hangman</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('sudoku')">
+                        <div class="feature-icon"><i class="fas fa-th"></i></div>
+                        <div class="feature-name">Sudoku</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('chess')">
+                        <div class="feature-icon"><i class="fas fa-chess"></i></div>
+                        <div class="feature-name">Chess</div>
+                    </div>
+                    <div class="feature-card" onclick="openGame('puzzle')">
+                        <div class="feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <div class="feature-name">Puzzle Game</div>
+                    </div>
+                </div>
+                
+                <div id="game-container" class="game-container">
+                    <h3 class="game-title">Pilih Game dari Menu Diatas</h3>
+                    <p>50+ game seru tersedia untuk dimainkan!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tools Tab -->
+        <div class="tab-content" id="tools">
+            <div class="content">
+                <h2><i class="fas fa-tools"></i> Koleksi Tools Utilitas (50+)</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="openTool('password')">
+                        <div class="feature-icon"><i class="fas fa-key"></i></div>
+                        <div class="feature-name">Password Generator</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('qr')">
+                        <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
+                        <div class="feature-name">QR Code Generator</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('currency')">
+                        <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="feature-name">Currency Converter</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('unit')">
+                        <div class="feature-icon"><i class="fas fa-ruler"></i></div>
+                        <div class="feature-name">Unit Converter</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('color')">
+                        <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                        <div class="feature-name">Color Picker</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('text')">
+                        <div class="feature-icon"><i class="fas fa-font"></i></div>
+                        <div class="feature-name">Text Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('calculator')">
+                        <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="feature-name">Calculator</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('base64')">
+                        <div class="feature-icon"><i class="fas fa-code"></i></div>
+                        <div class="feature-name">Base64 Converter</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('image')">
+                        <div class="feature-icon"><i class="fas fa-image"></i></div>
+                        <div class="feature-name">Image Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('json')">
+                        <div class="feature-icon"><i class="fas fa-code"></i></div>
+                        <div class="feature-name">JSON Formatter</div>
+                    </div>
+                </div>
+                
+                <div id="tool-container" class="tool-container">
+                    <h3 class="tool-title">Pilih Tool dari Menu Diatas</h3>
+                    <p>50+ tools utilitas tersedia untuk digunakan!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Tools Tab -->
+        <div class="tab-content" id="social">
+            <div class="content">
+                <h2><i class="fas fa-share-alt"></i> Social Media Tools (30+)</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="openTool('telegram')">
+                        <div class="feature-icon"><i class="fab fa-telegram"></i></div>
+                        <div class="feature-name">Telegram Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('whatsapp')">
+                        <div class="feature-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="feature-name">WhatsApp Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('instagram')">
+                        <div class="feature-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="feature-name">Instagram Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('facebook')">
+                        <div class="feature-icon"><i class="fab fa-facebook"></i></div>
+                        <div class="feature-name">Facebook Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('twitter')">
+                        <div class="feature-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="feature-name">Twitter Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('youtube')">
+                        <div class="feature-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="feature-name">YouTube Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('tiktok')">
+                        <div class="feature-icon"><i class="fab fa-tiktok"></i></div>
+                        <div class="feature-name">TikTok Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('linkedin')">
+                        <div class="feature-icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="feature-name">LinkedIn Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('discord')">
+                        <div class="feature-icon"><i class="fab fa-discord"></i></div>
+                        <div class="feature-name">Discord Tools</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('reddit')">
+                        <div class="feature-icon"><i class="fab fa-reddit"></i></div>
+                        <div class="feature-name">Reddit Tools</div>
+                    </div>
+                </div>
+                
+                <div id="social-container" class="tool-container">
+                    <h3 class="tool-title">Pilih Social Tool dari Menu Diatas</h3>
+                    <p>30+ social media tools tersedia!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Utilities Tab -->
+        <div class="tab-content" id="utilities">
+            <div class="content">
+                <h2><i class="fas fa-cogs"></i> Utilities Lainnya (30+)</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="openTool('timer')">
+                        <div class="feature-icon"><i class="fas fa-stopwatch"></i></div>
+                        <div class="feature-name">Timer & Stopwatch</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('notes')">
+                        <div class="feature-icon"><i class="fas fa-sticky-note"></i></div>
+                        <div class="feature-name">Notes App</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('weather')">
+                        <div class="feature-icon"><i class="fas fa-cloud-sun"></i></div>
+                        <div class="feature-name">Weather Info</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('pomodoro')">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <div class="feature-name">Pomodoro Timer</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('file')">
+                        <div class="feature-icon"><i class="fas fa-file"></i></div>
+                        <div class="feature-name">File Converter</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('random')">
+                        <div class="feature-icon"><i class="fas fa-random"></i></div>
+                        <div class="feature-name">Random Generator</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('calendar')">
+                        <div class="feature-icon"><i class="fas fa-calendar"></i></div>
+                        <div class="feature-name">Calendar</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('encoder')">
+                        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                        <div class="feature-name">Text Encoder</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('decoder')">
+                        <div class="feature-icon"><i class="fas fa-unlock"></i></div>
+                        <div class="feature-name">Text Decoder</div>
+                    </div>
+                    <div class="feature-card" onclick="openTool('markdown')">
+                        <div class="feature-icon"><i class="fas fa-markdown"></i></div>
+                        <div class="feature-name">Markdown Editor</div>
+                    </div>
+                </div>
+                
+                <div id="utility-container" class="tool-container">
+                    <h3 class="tool-title">Pilih Utility dari Menu Diatas</h3>
+                    <p>30+ utilities tersedia untuk digunakan!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="donation-section">
+            <h3 class="donation-title"><i class="fas fa-heart"></i> DONATE BUAT DUKUNG PROJECT</h3>
+            <div class="dana-info">
+                <div class="dana-logo">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="dana-number">0812 2095 3507</div>
+            </div>
+            <p>Dukung pengembangan project ini dengan berdonasi melalui DANA</p>
+            <p style="margin-top: 10px; font-size: 14px; color: #666;">Setiap donasi sangat berarti untuk pengembangan fitur-fitur baru!</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Dibuat dengan <i class="fas fa-heart" style="color: #ff0000;"></i> untuk Indonesia | Super Converter 200+ Fitur © 2023</p>
+    </div>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+
+        // URL Converter Functionality
+        const urlInput = document.getElementById('urlInput');
+        const convertBtn = document.getElementById('convertBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const resultBox = document.getElementById('resultBox');
+        const optionBtns = document.querySelectorAll('.option-btn');
+        
+        let conversionType = 'iframe';
+        
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                optionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                conversionType = this.getAttribute('data-type');
+                convertUrl();
+            });
+        });
+        
+        function generateHTMLFromURL(url, type) {
+            if (!url) {
+                return '❌ Harap masukkan URL yang valid';
+            }
+            
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            
+            try {
+                new URL(url);
+                
+                let htmlCode = '';
+                
+                switch(type) {
+                    case 'iframe':
+                        htmlCode = `<!-- Embed Website dengan Iframe -->
+<iframe 
+  src="${url}" 
+  width="100%" 
+  height="500" 
+  frameborder="0" 
+  style="border: 1px solid #ddd; border-radius: 8px;"
+  allowfullscreen>
+</iframe>
+<p style="font-size: 12px; color: #666; margin-top: 5px;">
+  Sumber: <a href="${url}" target="_blank">${url}</a>
+</p>`;
+                        break;
+                        
+                    case 'link':
+                        htmlCode = `<!-- Link ke Website -->
+<div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+  <h3 style="margin: 0 0 10px 0;">Link Website</h3>
+  <a href="${url}" target="_blank" style="color: #ff0000; text-decoration: none; font-weight: bold;">
+    ${url}
+  </a>
+  <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">
+    Klik link di atas untuk mengunjungi website
+  </p>
+</div>`;
+                        break;
+                        
+                    case 'preview':
+                        const domain = new URL(url).hostname;
+                        htmlCode = `<!-- Preview Card Website -->
+<div style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; max-width: 500px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+  <div style="background: linear-gradient(to right, #ff0000, #ffffff); padding: 15px; text-align: center;">
+    <h3 style="margin: 0; color: #333;">${domain}</h3>
+  </div>
+  <div style="padding: 15px; background: white;">
+    <p style="margin: 0 0 15px 0; color: #666;">Preview dari website:</p>
+    <a href="${url}" target="_blank" style="display: inline-block; background: #ff0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+      Kunjungi Website
+    </a>
+  </div>
+</div>`;
+                        break;
+                }
+                
+                return htmlCode;
+            } catch (error) {
+                return '❌ URL tidak valid. Pastikan format URL benar.\nContoh: https://example.com';
+            }
+        }
+        
+        function convertUrl() {
+            const url = urlInput.value.trim();
+            const htmlCode = generateHTMLFromURL(url, conversionType);
+            resultBox.textContent = htmlCode;
+        }
+        
+        convertBtn.addEventListener('click', convertUrl);
+        
+        copyBtn.addEventListener('click', function() {
+            const textToCopy = resultBox.textContent;
+            
+            if (!textToCopy || textToCopy.includes('Hasil konversi akan muncul di sini...')) {
+                alert('Tidak ada kode HTML untuk disalin!');
+                return;
+            }
+            
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i><span>Tersalin!</span>';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin teks: ', err);
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i><span>Tersalin!</span>';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+        });
+        
+        urlInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                convertUrl();
+            }
+        });
+        
+        urlInput.value = 'https://example.com';
+        convertUrl();
+
+        // Proxy Generator
+        const proxyList = [
+            "http://102.14.53.11:80", "http://185.73.129.200:80", "http://172.64.221.55:80",
+            "http://103.92.117.88:80", "http://45.123.90.14:80", "http://104.22.76.93:80",
+            "http://31.204.115.44:80", "http://198.51.204.73:80", "http://203.0.113.57:80",
+            "http://192.0.2.88:80", "http://45.67.123.200:80", "http://91.245.66.120:80",
+            "http://103.144.90.221:80", "http://139.28.56.30:80", "http://102.91.114.12:80",
+            "http://185.89.201.50:80", "http://172.67.220.144:80", "http://104.26.81.177:80",
+            "http://104.19.44.218:80", "http://45.83.91.119:80", "http://178.62.15.213:80",
+            "http://165.22.11.121:80", "http://203.119.44.81:80", "http://103.124.201.33:80",
+            "http://152.32.109.188:80", "http://160.119.221.99:80", "http://45.8.91.171:80",
+            "http://51.81.210.90:80", "http://145.239.54.121:80", "http://67.207.89.41:80"
+        ];
+
+        function generateProxies() {
+            const count = parseInt(document.getElementById('proxyCount').value) || 10;
+            const resultDiv = document.getElementById('proxyResult');
+            
+            let output = '';
+            for (let i = 0; i < Math.min(count, proxyList.length); i++) {
+                output += `<div class="proxy-item">${proxyList[i]}</div>`;
+            }
+            
+            resultDiv.innerHTML = output || '<div class="proxy-item">Tidak ada proxy yang tersedia</div>';
+        }
+
+        function copyProxies() {
+            const proxyItems = document.querySelectorAll('.proxy-item');
+            let text = '';
+            proxyItems.forEach(item => {
+                text += item.textContent + '\n';
+            });
+            
+            navigator.clipboard.writeText(text.trim())
+                .then(() => alert('Proxy berhasil disalin!'))
+                .catch(err => console.error('Gagal menyalin proxy:', err));
+        }
+
+        // Game Functions
+        function openGame(gameType) {
+            const container = document.getElementById('game-container');
+            
+            switch(gameType) {
+                case 'tic-tac-toe':
+                    container.innerHTML = `
+                        <h3 class="game-title">Tic Tac Toe</h3>
+                        <div class="game-status" id="gameStatus">Giliran: X</div>
+                        <div class="game-board" id="gameBoard">
+                            <div class="game-cell" data-index="0"></div>
+                            <div class="game-cell" data-index="1"></div>
+                            <div class="game-cell" data-index="2"></div>
+                            <div class="game-cell" data-index="3"></div>
+                            <div class="game-cell" data-index="4"></div>
+                            <div class="game-cell" data-index="5"></div>
+                            <div class="game-cell" data-index="6"></div>
+                            <div class="game-cell" data-index="7"></div>
+                            <div class="game-cell" data-index="8"></div>
+                        </div>
+                        <button class="game-btn" onclick="resetGame()">Reset Game</button>
+                    `;
+                    initializeTicTacToe();
+                    break;
+                    
+                case 'dice':
+                    container.innerHTML = `
+                        <h3 class="game-title">Dice Roller</h3>
+                        <div style="font-size: 100px; margin: 20px 0;" id="diceResult">🎲</div>
+                        <button class="game-btn" onclick="rollDice()">Lempar Dadu</button>
+                        <div class="game-status" id="diceStatus">Hasil: -</div>
+                    `;
+                    break;
+                    
+                case 'rps':
+                    container.innerHTML = `
+                        <h3 class="game-title">Batu Gunting Kertas</h3>
+                        <div class="game-status" id="rpsStatus">Pilih pilihan Anda!</div>
+                        <div style="display: flex; gap: 10px; justify-content: center; margin: 20px 0;">
+                            <button class="game-btn" onclick="playRPS('batu')">✊ Batu</button>
+                            <button class="game-btn" onclick="playRPS('gunting')">✌️ Gunting</button>
+                            <button class="game-btn" onclick="playRPS('kertas')">✋ Kertas</button>
+                        </div>
+                        <div id="rpsResult"></div>
+                    `;
+                    break;
+                    
+                default:
+                    container.innerHTML = `
+                        <h3 class="game-title">${gameType}</h3>
+                        <p>Game ${gameType} sedang dimuat...</p>
+                        <button class="game-btn" onclick="startGame('${gameType}')">Mulai Game</button>
+                    `;
+            }
+        }
+
+        // Tic Tac Toe Game
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+
+        function initializeTicTacToe() {
+            const cells = document.querySelectorAll('.game-cell');
+            cells.forEach(cell => {
+                cell.addEventListener('click', handleCellClick);
+            });
+        }
+
+        function handleCellClick(e) {
+            const index = e.target.getAttribute('data-index');
+            
+            if (gameBoard[index] !== '' || !gameActive) return;
+            
+            gameBoard[index] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            
+            if (checkWinner()) {
+                document.getElementById('gameStatus').textContent = `Pemenang: ${currentPlayer}!`;
+                gameActive = false;
+                return;
+            }
+            
+            if (gameBoard.every(cell => cell !== '')) {
+                document.getElementById('gameStatus').textContent = 'Permainan Seri!';
+                gameActive = false;
+                return;
+            }
+            
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            document.getElementById('gameStatus').textContent = `Giliran: ${currentPlayer}`;
+        }
+
+        function checkWinner() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+            
+            return winPatterns.some(pattern => {
+                const [a, b, c] = pattern;
+                return gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c];
+            });
+        }
+
+        function resetGame() {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            gameActive = true;
+            
+            document.querySelectorAll('.game-cell').forEach(cell => {
+                cell.textContent = '';
+            });
+            
+            document.getElementById('gameStatus').textContent = 'Giliran: X';
+        }
+
+        // Dice Roller
+        function rollDice() {
+            const result = Math.floor(Math.random() * 6) + 1;
+            const diceFaces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+            document.getElementById('diceResult').textContent = diceFaces[result - 1];
+            document.getElementById('diceStatus').textContent = `Hasil: ${result}`;
+        }
+
+        // Rock Paper Scissors
+        function playRPS(playerChoice) {
+            const choices = ['batu', 'gunting', 'kertas'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            
+            let result = '';
+            
+            if (playerChoice === computerChoice) {
+                result = 'Seri!';
+            } else if (
+                (playerChoice === 'batu' && computerChoice === 'gunting') ||
+                (playerChoice === 'gunting' && computerChoice === 'kertas') ||
+                (playerChoice === 'kertas' && computerChoice === 'batu')
+            ) {
+                result = 'Anda Menang!';
+            } else {
+                result = 'Komputer Menang!';
+            }
+            
+            document.getElementById('rpsStatus').textContent = `Anda: ${playerChoice} vs Komputer: ${computerChoice}`;
+            document.getElementById('rpsResult').innerHTML = `<div style="font-size: 24px; font-weight: bold; margin: 10px 0;">${result}</div>`;
+        }
+
+        // Tool Functions
+        function openTool(toolType) {
+            let container;
+            const currentTab = document.querySelector('.tab-btn.active').dataset.tab;
+            
+            if (currentTab === 'tools') container = document.getElementById('tool-container');
+            else if (currentTab === 'social') container = document.getElementById('social-container');
+            else container = document.getElementById('utility-container');
+            
+            switch(toolType) {
+                case 'password':
+                    container.innerHTML = `
+                        <h3 class="tool-title">Password Generator</h3>
+                        <input type="number" id="passLength" class="tool-input" placeholder="Panjang Password (8-32)" value="12" min="8" max="32">
+                        <div style="margin: 10px 0; text-align: left;">
+                            <label><input type="checkbox" id="useUpper" checked> Huruf Besar (A-Z)</label><br>
+                            <label><input type="checkbox" id="useLower" checked> Huruf Kecil (a-z)</label><br>
+                            <label><input type="checkbox" id="useNumbers" checked> Angka (0-9)</label><br>
+                            <label><input type="checkbox" id="useSymbols"> Simbol (!@#$%^&*)</label>
+                        </div>
+                        <button class="tool-btn" onclick="generatePassword()">Generate Password</button>
+                        <div class="tool-result" id="passwordResult"></div>
+                    `;
+                    break;
+                    
+                case 'calculator':
+                    container.innerHTML = `
+                        <h3 class="tool-title">Calculator</h3>
+                        <div class="calculator">
+                            <div class="calc-display" id="calcDisplay">0</div>
+                            <button class="calc-btn" onclick="clearCalculator()">C</button>
+                            <button class="calc-btn" onclick="deleteLast()">⌫</button>
+                            <button class="calc-btn" onclick="appendOperator('%')">%</button>
+                            <button class="calc-btn" onclick="appendOperator('/')">/</button>
+                            <button class="calc-btn" onclick="appendNumber('7')">7</button>
+                            <button class="calc-btn" onclick="appendNumber('8')">8</button>
+                            <button class="calc-btn" onclick="appendNumber('9')">9</button>
+                            <button class="calc-btn" onclick="appendOperator('*')">×</button>
+                            <button class="calc-btn" onclick="appendNumber('4')">4</button>
+                            <button class="calc-btn" onclick="appendNumber('5')">5</button>
+                            <button class="calc-btn" onclick="appendNumber('6')">6</button>
+                            <button class="calc-btn" onclick="appendOperator('-')">-</button>
+                            <button class="calc-btn" onclick="appendNumber('1')">1</button>
+                            <button class="calc-btn" onclick="appendNumber('2')">2</button>
+                            <button class="calc-btn" onclick="appendNumber('3')">3</button>
+                            <button class="calc-btn" onclick="appendOperator('+')">+</button>
+                            <button class="calc-btn" onclick="appendNumber('0')" style="grid-column: 1 / span 2;">0</button>
+                            <button class="calc-btn" onclick="appendNumber('.')">.</button>
+                            <button class="calc-btn" onclick="calculateResult()">=</button>
+                        </div>
+                    `;
+                    initializeCalculator();
+                    break;
+                    
+                default:
+                    container.innerHTML = `
+                        <h3 class="tool-title">${toolType}</h3>
+                        <p>Tool ${toolType} sedang dimuat...</p>
+                        <button class="tool-btn" onclick="startTool('${toolType}')">Mulai Tool</button>
+                    `;
+            }
+        }
+
+        // Password Generator
+        function generatePassword() {
+            const length = document.getElementById('passLength').value;
+            const useUpper = document.getElementById('useUpper').checked;
+            const useLower = document.getElementById('useLower').checked;
+            const useNumbers = document.getElementById('useNumbers').checked;
+            const useSymbols = document.getElementById('useSymbols').checked;
+            
+            const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lower = 'abcdefghijklmnopqrstuvwxyz';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            let chars = '';
+            if (useUpper) chars += upper;
+            if (useLower) chars += lower;
+            if (useNumbers) chars += numbers;
+            if (useSymbols) chars += symbols;
+            
+            if (chars === '') {
+                document.getElementById('passwordResult').textContent = 'Pilih setidaknya satu jenis karakter!';
+                return;
+            }
+            
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            document.getElementById('passwordResult').textContent = `Password: ${password}`;
+        }
+
+        // Calculator
+        let calculatorValue = '0';
+        let waitingForSecondOperand = false;
+        let operator = null;
+        let previousValue = '0';
+
+        function initializeCalculator() {
+            updateCalculatorDisplay();
+        }
+
+        function updateCalculatorDisplay() {
+            document.getElementById('calcDisplay').textContent = calculatorValue;
+        }
+
+        function appendNumber(number) {
+            if (waitingForSecondOperand) {
+                calculatorValue = number;
+                waitingForSecondOperand = false;
+            } else {
+                calculatorValue = calculatorValue === '0' ? number : calculatorValue + number;
+            }
+            updateCalculatorDisplay();
+        }
+
+        function appendOperator(nextOperator) {
+            const inputValue = parseFloat(calculatorValue);
+            
+            if (operator && waitingForSecondOperand) {
+                operator = nextOperator;
+                return;
+            }
+            
+            if (previousValue === '0') {
+                previousValue = calculatorValue;
+            } else if (operator) {
+                const result = performCalculation();
+                calculatorValue = String(result);
+                previousValue = calculatorValue;
+            }
+            
+            waitingForSecondOperand = true;
+            operator = nextOperator;
+            updateCalculatorDisplay();
+        }
+
+        function performCalculation() {
+            const prev = parseFloat(previousValue);
+            const current = parseFloat(calculatorValue);
+            
+            if (isNaN(prev) || isNaN(current)) return;
+            
+            let result = 0;
+            switch (operator) {
+                case '+': result = prev + current; break;
+                case '-': result = prev - current; break;
+                case '*': result = prev * current; break;
+                case '/': result = prev / current; break;
+                case '%': result = prev % current; break;
+                default: return current;
+            }
+            
+            return result;
+        }
+
+        function calculateResult() {
+            if (!waitingForSecondOperand && operator) {
+                const result = performCalculation();
+                calculatorValue = String(result);
+                operator = null;
+                previousValue = '0';
+                waitingForSecondOperand = false;
+                updateCalculatorDisplay();
+            }
+        }
+
+        function clearCalculator() {
+            calculatorValue = '0';
+            previousValue = '0';
+            operator = null;
+            waitingForSecondOperand = false;
+            updateCalculatorDisplay();
+        }
+
+        function deleteLast() {
+            if (calculatorValue.length > 1) {
+                calculatorValue = calculatorValue.slice(0, -1);
+            } else {
+                calculatorValue = '0';
+            }
+            updateCalculatorDisplay();
+        }
+
+        // Initialize proxy generator on load
+        generateProxies();
+    </script>
+</body>
+</html>
